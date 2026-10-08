@@ -1,0 +1,462 @@
+<!DOCTYPE html><html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tea Bliss | About Us</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background: white;
+        color: #222;
+    }
+
+    header {
+        background: #8b0000;
+        color: white;
+        text-align: center;
+        padding: 25px 20px;
+    }
+
+    header h1 {
+        font-family: Georgia, serif;
+        font-size: 45px;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+    }
+
+    header p {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    nav {
+        background: #111;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding: 15px;
+        gap: 25px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 5px 0;
+    }
+
+    nav a:hover {
+        color: #ffcccc;
+    }
+
+    .about {
+        padding: 70px 7%;
+        background: #f8f3ef;
+        min-height: 600px;
+    }
+
+    .page-title {
+        text-align: center;
+        margin-bottom: 60px;
+    }
+
+    .page-title h2 {
+        font-family: Georgia, serif;
+        font-size: 42px;
+        color: #8b0000;
+        margin-bottom: 10px;
+    }
+
+    .page-title p {
+        font-size: 17px;
+        line-height: 1.6;
+    }
+
+    /* =========================
+       PYRAMID ORGANIZATIONAL CHART
+       ========================= */
+
+    .team-container {
+        max-width: 1100px;
+        margin: auto;
+    }
+
+    .level {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 35px;
+        position: relative;
+    }
+
+    /* TOP - PERSON 3 */
+    .top-level {
+        margin-bottom: 80px;
+    }
+
+    /* MIDDLE - PERSON 2 & 5 */
+    .middle-level {
+        margin-bottom: 80px;
+    }
+
+    /* BOTTOM - PERSON 1, 4 & 6 */
+    .bottom-level {
+        gap: 25px;
+    }
+
+    .team-card {
+        width: 300px;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.10);
+        border-top: 5px solid #8b0000;
+        position: relative;
+        z-index: 2;
+    }
+
+    .team-card img {
+        width: 100%;
+        height: 250px;
+        object-fit: contain;
+        display: block;
+        background: white;
+    }
+
+    .team-info {
+        padding: 20px 15px;
+    }
+
+    .team-info h3 {
+        color: #8b0000;
+        font-family: Georgia, serif;
+        font-size: 21px;
+        margin-bottom: 8px;
+    }
+
+    .team-info h4 {
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .team-info p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* =========================
+       CONNECTING LINES
+       ========================= */
+
+    /* Vertical line coming from Person 3 */
+    .top-level::after {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 80px;
+        background: #8b0000;
+        left: 50%;
+        top: 100%;
+        transform: translateX(-50%);
+    }
+
+    /* Horizontal line connecting Person 2 and Person 5 */
+    .middle-level::before {
+        content: "";
+        position: absolute;
+        width: 335px;
+        height: 3px;
+        background: #8b0000;
+        left: 50%;
+        top: -40px;
+        transform: translateX(-50%);
+    }
+
+    /* Vertical line from middle horizontal line */
+    .middle-level::after {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 40px;
+        background: #8b0000;
+        left: 50%;
+        top: -40px;
+        transform: translateX(-50%);
+    }
+
+    /* Horizontal line above the 3 bottom people */
+    .bottom-level::before {
+        content: "";
+        position: absolute;
+        width: 625px;
+        height: 3px;
+        background: #8b0000;
+        left: 50%;
+        top: -40px;
+        transform: translateX(-50%);
+    }
+
+    /* Center vertical connection to bottom level */
+    .bottom-level::after {
+        content: "";
+        position: absolute;
+        width: 3px;
+        height: 40px;
+        background: #8b0000;
+        left: 50%;
+        top: -40px;
+        transform: translateX(-50%);
+    }
+
+    .back-container {
+        max-width: 1100px;
+        margin: 50px auto 0;
+        text-align: left;
+    }
+
+    .back-button {
+        display: inline-block;
+        background: #8b0000;
+        color: white;
+        padding: 13px 25px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .back-button:hover {
+        background: #111;
+    }
+
+    footer {
+        background: #111;
+        color: white;
+        text-align: center;
+        padding: 25px;
+        margin-top: 50px;
+    }
+
+    /* TABLET */
+    @media (max-width: 1000px) {
+
+        .team-card {
+            width: 270px;
+        }
+
+        .bottom-level {
+            gap: 15px;
+        }
+
+        .bottom-level::before {
+            width: 560px;
+        }
+    }
+
+    /* PHONE */
+    @media (max-width: 700px) {
+
+        .about {
+            padding: 50px 5%;
+        }
+
+        .page-title h2 {
+            font-size: 35px;
+        }
+
+        .level {
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .team-card {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        /*
+        Hide connecting lines on small screens
+        so the cards won't overlap.
+        */
+        .top-level::after,
+        .middle-level::before,
+        .middle-level::after,
+        .bottom-level::before,
+        .bottom-level::after {
+            display: none;
+        }
+
+        .team-card img {
+            height: 250px;
+        }
+
+        header h1 {
+            font-size: 35px;
+        }
+
+        nav {
+            gap: 12px;
+        }
+
+        nav a {
+            font-size: 13px;
+        }
+    }
+</style></head><body><header>
+    <h1>NOMINOM</h1>
+    <p>Higop Mo, Happy Mo</p>
+</header><nav>
+    <a href="index.html">Home</a>
+    <a href="background.html">Background</a>
+    <a href="mission&vision.html">Mission & Vision</a>
+    <a href="aboutus.html">About Us</a>
+    <a href="contactus.html">Contact</a>
+    <a href="product.html">Products</a>
+</nav><section class="about"><div class="page-title">
+    <h2>About Us</h2>
+    <p>
+        Meet the people behind Tea Bliss and the passion that makes
+        every cup special.
+    </p>
+</div>
+
+
+<div class="team-container">
+
+    <!-- =========================
+         TOP: PERSON 3
+         ========================= -->
+
+    <div class="level top-level">
+
+        <div class="team-card">
+
+            <img src="tala.jpg" alt="Krystal Kaye Hurtada">
+
+            <div class="team-info">
+                <h3>Krystal Kaye Hurtada</h3>
+                <h4>Owner</h4>
+                <p>
+                    Description about this person goes here.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SECOND LEVEL: PERSON 2 & 5
+         ========================= -->
+
+    <div class="level middle-level">
+
+        <!-- PERSON 2 -->
+        <div class="team-card">
+
+            <img src="jec.jpg" alt="Jecilyn Calambro">
+
+            <div class="team-info">
+                <h3>Jecilyn Calambro</h3>
+                <h4>Manager</h4>
+                <p>
+                    Description about this person goes here.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- PERSON 5 -->
+        <div class="team-card">
+
+            <img src="dong.jpg" alt="Dave Micheal Sarandi">
+
+            <div class="team-info">
+                <h3>Dave Micheal Sarandi</h3>
+                <h4>Manager</h4>
+                <p>
+                    Description about this person goes here.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         THIRD LEVEL: PERSON 1, 4 & 6
+         ========================= -->
+
+    <div class="level bottom-level">
+
+        <!-- PERSON 1 -->
+        <div class="team-card">
+
+            <img src="ced.jpg" alt="Ceddie De Guzman">
+
+            <div class="team-info">
+                <h3>Ceddie De Guzman</h3>
+                <h4>Staff</h4>
+                <p>
+                    Description about this person goes here.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- PERSON 4 -->
+        <div class="team-card">
+
+            <img src="person4.jpg" alt="Jaryd Poral">
+
+            <div class="team-info">
+                <h3>Jaryd Poral</h3>
+                <h4>Staff</h4>
+                <p>
+                    Description about this person goes here.
+                </p>
+            </div>
+
+        </div>
+
+
+        <!-- PERSON 6 -->
+        <div class="team-card">
+
+            <img src="ivan.jpg" alt="Ivan Daulo">
+
+            <div class="team-info">
+                <h3>Ivan Daulo</h3>
+                <h4>Staff</h4>
+                <p>
+                    Description about this person goes here.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="back-container">
+    <a href="index.html" class="back-button">← Back to Home</a>
+</div>
+
+</section><footer>
+    <p>&copy; 2026 NOMINOM. All Rights Reserved.</p>
+</footer></body>
+</html>
